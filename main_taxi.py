@@ -193,11 +193,11 @@ class Standardizer():
                            interpolation = 'midpoint')
         IQR = Q3 - Q1
 
-        upper = np.where(dataframe_PM['PM'] >= (Q3+1.5*IQR))
-        lower = np.where(dataframe_PM['PM'] <= (Q1-1.5*IQR))
-
-        dataframe_PM.drop(upper[0], inplace = True)
-        dataframe_PM.drop(lower[0], inplace = True)
+        max = Q3+(1.5*IQR)
+        min = Q1-(1.5*IQR)
+ 
+        dataframe_PM.loc[dataframe_PM['PM'] < min, 'PM'] = np.nan
+        dataframe_PM.loc[dataframe_PM['PM'] > max, 'PM'] = np.nan
 
         plot_PM = dataframe_PM.boxplot(by = 'Borough', column = ['PM'], grid = False)
         plt.savefig(file_list_features.results_path + r'/boxplot_PM.png')
@@ -212,11 +212,11 @@ class Standardizer():
                            interpolation = 'midpoint')
         IQR = Q3 - Q1
 
-        upper = np.where(dataframe_PMT['PMT'] >= (Q3+1.5*IQR))
-        lower = np.where(dataframe_PMT['PMT'] <= (Q1-1.5*IQR))
-
-        dataframe_PMT.drop(upper[0], inplace = True)
-        dataframe_PMT.drop(lower[0], inplace = True)
+        max = Q3+(1.5*IQR)
+        min = Q1-(1.5*IQR)
+        
+        dataframe_PMT.loc[dataframe_PMT['PMT'] < min, 'PMT'] = np.nan
+        dataframe_PMT.loc[dataframe_PMT['PMT'] > max, 'PMT'] = np.nan
 
         dataframe_PMT = dataframe_PMT[(dataframe_PMT['PMT']>0)]
 
