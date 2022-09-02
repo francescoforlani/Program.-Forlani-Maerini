@@ -21,7 +21,7 @@ my_data_path = r'C:\Users\Franc\Desktop\progetto_programmazione\data'
 my_results_path = r'C:\Users\Franc\Desktop\progetto_programmazione\results'
 
 # INSERIRE NELLA SEGUENTE LISTA I FILE DA ANALIZZARE, DEVONO ESSERE IN FORMATO .csv
-dati = file_list_features(['yellow_tripdata_2020-06.csv','yellow_tripdata_2020-02.csv'],
+dati = file_list_features(['yellow_tripdata_2020-04.csv'],
                            my_data_path, my_results_path)
 
 
@@ -32,6 +32,6 @@ dati = file_list_features(['yellow_tripdata_2020-06.csv','yellow_tripdata_2020-0
 # INOLTRE, SELEZIONARE SE SI VUOLE EFFETTUARE L'ANALISI CONSIDERANDO IL BOROUGH DI PARTENZA 
 # DELLA CORSA (PU) O IL BOROUGH DI ARRIVO (DO)
 
-dati = dati.list_features(['Queens'], 'PU')
+dati = dati.list_features([], 'PU')
 
 
